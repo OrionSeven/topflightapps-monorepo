@@ -10,11 +10,9 @@ export type DayOfWeek =
 | "Sunday"
 
 export interface AvailabilityTimeSlot {
-name: string
 days: DayOfWeek[]
 startTime: string // Format: "HH:mm"
 endTime: string // Format: "HH:mm"
-timeZone: string // e.g. "America/Los_Angeles"
 }
 
 export interface Schedule {

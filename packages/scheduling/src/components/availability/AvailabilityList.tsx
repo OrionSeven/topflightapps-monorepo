@@ -83,19 +83,35 @@ export default function AvailabilityList({ schedules }: AvailabilityListProps) {
             key={idx}
             variant="borderless"
             className={twMerge(
-              "border border-gray-300 p-4",
+              "border border-gray-200 p-4 hover:bg-gray-100/50 transition-colors duration-200 flex flex-row justify-between",
               isFirst && "rounded-t-lg rounded-b-none border-b-0",
               isMiddle && "rounded-none border-b-0",
               isLast && "rounded-b-lg rounded-t-none",
               schedules.length === 1 && "rounded-lg" // If there's only one card
             )}
           >
+            <div>
             <CardHeader className="flex flex-row items-center justify-between w-full p-0">
               <CardTitle className="text-md font-medium text-gray-800">
                 {entry.name || "Unnamed Entry"}
               </CardTitle>
+            </CardHeader>
 
-              <div className="flex flex-row space-x-3">
+            <CardContent className="flex flex-col p-0 pt-0">
+              <div className="text-gray-400">
+                {formatDays(entry.availability[0].days)}, {" "}
+                {formatTime(entry.availability[0].startTime)} -{" "}
+                {formatTime(entry.availability[0].endTime)}
+              </div>
+              {entry.timeZone && (
+                <div className="text-gray-400">
+                  ({entry.timeZone})
+                </div>
+              )}
+              </CardContent>
+            </div>
+            <div>
+            <div className="flex flex-row">
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -104,7 +120,7 @@ export default function AvailabilityList({ schedules }: AvailabilityListProps) {
                         size="icon"
                         onClick={() => handleEdit(entry.availability[0])}
                       >
-                        <Edit className="w-4 h-4 text-gray-600" />
+                        <Edit className="w-4 h-4 text-violet-900" />
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent>Edit Entry</TooltipContent>
@@ -119,27 +135,14 @@ export default function AvailabilityList({ schedules }: AvailabilityListProps) {
                         size="icon"
                         onClick={() => handleDelete(entry.availability[0])}
                       >
-                        <Trash2 className="w-4 h-4 text-red-600" />
+                        <Trash2 className="w-4 h-4 text-violet-900" />
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent>Delete Entry</TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
               </div>
-            </CardHeader>
-
-            <CardContent className="flex flex-col space-y-2 p-0 pt-0">
-              <div className="text-gray-400">
-                {formatDays(entry.availability[0].days)}, {" "}
-                {formatTime(entry.availability[0].startTime)} -{" "}
-                {formatTime(entry.availability[0].endTime)}
-              </div>
-              {entry.timeZone && (
-                <div className="text-gray-400">
-                  ({entry.timeZone})
-                </div>
-              )}
-            </CardContent>
+            </div>
 
             {selectedEntry === entry.availability[0] && (
               <div className="mt-4 p-4 border-t border-gray-300">
