@@ -20,3 +20,21 @@ yarn install
 ```bash
 yarn dev
 ```
+
+## Tailwind
+
+When using Tailwind in a package, you need to add the package's source files to the content array in the tailwind.config.ts file.
+
+```ts
+content: [
+  "../../packages/scheduling/src/**/*.{js,ts,jsx,tsx,mdx}",
+]
+```
+
+If you are using a package outside of this monorepo, you will need to use the package name instead of a relative path.
+
+```ts
+content: [
+  "@topflightapps/scheduling/src/**/*.{js,ts,jsx,tsx,mdx}",
+]
+```
