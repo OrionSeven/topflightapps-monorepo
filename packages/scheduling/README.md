@@ -19,28 +19,15 @@ To use the components, you can import them into your project and use them as nee
 import Availability from "@topflightapps/scheduling/src/components/availability";
 ```
 
-### Example Availability Data Object to pass into Availability Component
-
 ```tsx
-const schedules = {
-  status: "success",
-  data: {
-    id: 254,
-    ownerId: 478,
-    name: "Urgent Care Hours",
-    timeZone: "America/Los_Angeles",
-    availability: [
-      {
-        days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        startTime: "08:00",
-        endTime: "20:00"
-      },
-      {
-        days: ["Saturday", "Sunday"],
-        startTime: "08:00",
-        endTime: "18:00"
-      }
-    ]
-  }
-}
+<Availability userId={1} />
 ```
+
+### Database
+
+The database schema is defined in the `schema.ts` file. To use this package in your project you'll need to implement the schema in your database.
+
+
+### Authentication & Authorization
+
+It's assumed the same auth provider is used for the scheduling package as the rest of the app. Auth would be implemented in it's own package in the future.
