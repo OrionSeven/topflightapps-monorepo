@@ -1,0 +1,1 @@
+The hooks in this package are used to fetch availability data from the database.

@@ -1,0 +1,1 @@
+Intermediate layer between the database and the hooks.

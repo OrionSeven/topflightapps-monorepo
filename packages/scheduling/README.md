@@ -5,6 +5,7 @@ The Scheduling package is used to manage availability for lineups and instant up
 ### Components
 
 - Availability - The main component that displays the availability view. 
+- AvailabilityList - A component that displays the availability in a list view.
 - ViewSelector - A component that allows the user to switch between list and calendar views.
 - TimezoneSelector - A component that allows the user to switch between timezones.
 - ListView - A component that displays the availability in a list view.
