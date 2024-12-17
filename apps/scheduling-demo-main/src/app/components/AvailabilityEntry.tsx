@@ -18,7 +18,7 @@ import { Edit, Trash2 } from "lucide-react";
 import { Schedule, AvailabilityTimeSlot, DayOfWeek } from "@topflightapps/scheduling/src/types/availability";
 import { twMerge } from "tailwind-merge";
 
-export interface AvailabilityEntryProps {
+interface AvailabilityEntryProps {
   entry: Schedule;
   isFirst: boolean;
   isMiddle: boolean;
@@ -70,7 +70,7 @@ export default function AvailabilityEntry({
     <Card
       variant="borderless"
       className={twMerge(
-        "border border-gray-200 p-4 hover:bg-gray-100/50 transition-colors duration-200 flex flex-row justify-between",
+        "border border-gray-200 p-4 hover:bg-sky-400/30 transition-colors duration-200 flex flex-row justify-between bg-sky-50",
         isFirst && "rounded-t-lg rounded-b-none border-b-0",
         isMiddle && "rounded-none border-b-0",
         isLast && "rounded-b-lg rounded-t-none",
@@ -79,19 +79,19 @@ export default function AvailabilityEntry({
     >
       <div>
         <CardHeader className="flex flex-row items-center justify-between w-full p-0">
-          <CardTitle className="text-md font-medium text-gray-800">
+          <CardTitle className="text-md font-medium text-sky-800">
             {entry.name || "Unnamed Entry"}
           </CardTitle>
         </CardHeader>
 
         <CardContent className="flex flex-col p-0 pt-0">
-          <div className="text-gray-400">
+          <div className="text-sky-400">
             {formatDays(entry.availability[0].days)},{" "}
             {formatTime(entry.availability[0].startTime)} -{" "}
             {formatTime(entry.availability[0].endTime)}
           </div>
           {entry.timeZone && (
-            <div className="text-gray-400">({entry.timeZone})</div>
+            <div className="text-sky-400">({entry.timeZone})</div>
           )}
         </CardContent>
       </div>
@@ -106,7 +106,7 @@ export default function AvailabilityEntry({
                   size="icon"
                   onClick={() => onEdit(entry.availability[0])}
                 >
-                  <Edit className="w-4 h-4 text-violet-900" />
+                  <Edit className="w-4 h-4 text-sky-900" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>Edit Entry</TooltipContent>
@@ -121,7 +121,7 @@ export default function AvailabilityEntry({
                   size="icon"
                   onClick={() => onDelete(entry.availability[0])}
                 >
-                  <Trash2 className="w-4 h-4 text-violet-900" />
+                  <Trash2 className="w-4 h-4 text-sky-900" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>Delete Entry</TooltipContent>
